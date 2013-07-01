@@ -11,9 +11,7 @@ from Camera import Camera
 
 import physics
 import resources
-
-# from Entities.Entity import PhysicsEntity
-# from Entities.Blob import Blob
+import Entities
 
 
 class Engine:
@@ -43,6 +41,7 @@ class Engine:
 
     # A dict from drawLayerNames to a Batch of entities. they are mutually exclusive
     self.drawLayers = { name : Batch()  for name in self.drawLayerNames }
+    self.drawCalls =  { name : []       for name in self.drawLayerNames }
     # self.drawLayersBatch = {} #a dict from drawLayerNames to a list of batches
     # for name in self.drawLayerNames:
     #   self.drawLayers[name] = set()
@@ -129,6 +128,8 @@ class Engine:
     self.camera.track() # does camera work (such as what it focuses on)
     for name in self.drawLayerNames:
       shift = Vec2d() if name.startswith('UI') else None
+      for func in self.drawCalls[name]:
+        func()
       with self.camera.shiftView(shift):
         self.drawLayers[name].draw()
 
@@ -141,44 +142,29 @@ class Engine:
 
     # load the entities
     for e in resources.loadEntities(levelName):
-      addEntity(e)
+      self.addEntity(e)
 
 
-  def addEntity(self, e):
-    self.entityAddQueue.add(e)
+  def addEntity(   self, e):  self.entityAddQueue.append(e)
+  def removeEntity(self, e):  self.entityDelQueue.append(e)
 
-  def removeEntity(self, e):
-    self.entityDelQueue.add(e)
-
-
-  # return whether e has conditionAttr
-  # if it does, check that e also has the sideAttrs
-  def hasAttrs(e, conditionAttr, *sideAttrs):
-    if hasattr(e, conditionAttr):
-      for attr in sideAttrs:
-        assert hasattr(e, attr)
-      return True
-    return False
-
-  # ducktype tests
-  def isEntityKind_physics(e):  return hasattrs(e, 'body', 'shapes')
-  def isEntityKind_visible(e):  return hasattrs(e, 'drawLayer', 'vertexLists')
-  def isEntityKind_updating(e): return hasattrs(e, 'updating')
 
   def _processAdding(self):
     while len(self.entityAddQueue):
       e = self.entityAddQueue.pop(0)
       self.groups["all"].add(e)
-      if isEntityKind_updating(e):   self.groups['updating'].add(e)
-      if isEntityKind_physics(e):
-
+      if Entities.isEntityKind_updating(e):   self.groups['updating'].add(e)
+      if Entities.isEntityKind_physics(e):
         self.space.add(e.shapes)
         for shape in e.shapes:
           self.shapeToEntity[shape] = e
         if e.body is not self.space.static_body:
           self.space.add(e.body)
       if e.drawLayer is not None:
-        self.drawLayers[e.drawLayer].add(e)
+        e.setupVertexLists(self.drawLayers[e.drawLayer])
+        assert hasattr(e, 'vertexLists')
+        if hasattr(e, 'onDraw'):
+          self.drawCalls[e.drawLayer].add(e)
 
   def _processRemoving(self):
     while len(self.entityDelQueue):
@@ -188,14 +174,16 @@ class Engine:
       else:
         print "was told to delete entity but it was not in the 'all' group: " + repr(e) # DEBUG
         continue
-      if isEntityKind_updating(e):   self.groups['updating'].remove(e)
-      if isEntityKind_physics(e):
+      if Entities.isEntityKind_updating(e):   self.groups['updating'].remove(e)
+      if Entities.isEntityKind_physics(e):
         self.space.remove(e.shapes)
         for shape in e.shapes:
           del self.shapeToEntity[shape]
         if e.body is not self.space.static_body:
           self.space.remove(e.body)
-      if isEntityKind_visible(e):
+      if Entities.isEntityKind_visible(e):
         self.drawLayers[e.drawLayer].remove(e)
+        if hasattr(e, 'onDraw'):
+          self.drawCalls[e.drawLayer].remove(e)
         for vertexList in e.vertexLists:
           vertexList.delete()

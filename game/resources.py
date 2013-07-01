@@ -41,17 +41,17 @@ def loadEntities(levelName):
         continue
 
       entityType, args = data[0], data[1:]
-      if entityType not in Level.constructors:
+      if entityType not in constructors:
         print lineErr, "This is not a valid entity type:", entityType
-        print lineErr, "Possible types:", Level.constructors.keys()
+        print lineErr, "Possible types:", constructors.keys()
         continue
-      constructor = self.constructors[entityType]
+      constructor = constructors[entityType]
 
       try:
-        newEntity = constructor(self, *args)
+        newEntity = constructor(*args)
       except:
         print lineErr, "Constructing", entityType, "failed. probably weird arguments:", args
-        if self.chrashOnFail: raise  # TODO: test me!
+        if chrashOnFail: raise  # TODO: test me!
         continue
 
       entities.append(newEntity)

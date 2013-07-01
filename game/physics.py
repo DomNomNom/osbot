@@ -22,7 +22,6 @@ for i, layerClasses in enumerate(collisionLayers):
   for cls in layerClasses:
     physicsClass.collisionBitmask += 2**i
 
-
 shapeToEntity = {}
 def createSpace(shapeToEntityMap):
   global shapeToEntity
