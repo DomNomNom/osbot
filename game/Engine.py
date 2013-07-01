@@ -161,10 +161,10 @@ class Engine:
         if e.body is not self.space.static_body:
           self.space.add(e.body)
       if e.drawLayer is not None:
-        e.setupVertexLists(self.drawLayers[e.drawLayer])
-        assert hasattr(e, 'vertexLists')
-        if hasattr(e, 'onDraw'):
-          self.drawCalls[e.drawLayer].add(e)
+        # e.setupVertexLists(self.drawLayers[e.drawLayer])
+        # assert hasattr(e, 'vertexLists')
+        if hasattr(e, 'draw'):
+          self.drawCalls[e.drawLayer].append(e.draw)
 
   def _processRemoving(self):
     while len(self.entityDelQueue):
@@ -182,8 +182,8 @@ class Engine:
         if e.body is not self.space.static_body:
           self.space.remove(e.body)
       if Entities.isEntityKind_visible(e):
-        self.drawLayers[e.drawLayer].remove(e)
-        if hasattr(e, 'onDraw'):
+        # self.drawLayers[e.drawLayer].remove(e)
+        if hasattr(e, 'draw'):
           self.drawCalls[e.drawLayer].remove(e)
-        for vertexList in e.vertexLists:
-          vertexList.delete()
+        # for vertexList in e.vertexLists:
+        #   vertexList.delete()
