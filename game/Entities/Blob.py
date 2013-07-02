@@ -1,13 +1,16 @@
+from itertools import chain
+from math import pi, sqrt
+
 import pyglet.gl as gl
+import pyglet
+
 import pymunk
 from pymunk import Vec2d
 
-
-from itertools import chain
-from math import pi
-
 from Entity import PhysicsEntity
-from  game.Camera import shiftView
+from game.Camera import shiftView
+from game.controllers.base import Controller
+
 
 class Blob(PhysicsEntity):
 
@@ -15,6 +18,9 @@ class Blob(PhysicsEntity):
 
   colour = (1, 0, 0)
 
+  circleStepsize = 10 # degrees for drawing
+
+  minRadius = 5
 
   def radius_get(self):  return self._radius
   def radius_set(self, radius):
@@ -24,13 +30,14 @@ class Blob(PhysicsEntity):
     self.body.mass = pi * radius**2
     self.radiusVector = Vec2d(radius, 0)
     self.bodyVerticies = [Vec2d()] # recalculate verticies (this could be done with a matrix transform)
-    for i in xrange(0, 365, 5):
+    for i in xrange(0, 360+self.circleStepsize, self.circleStepsize):
       self.bodyVerticies.append(self.radiusVector.rotated_degrees(i))
   radius = property(radius_get, radius_set)
 
 
 
-  def __init__(self, pos, radius, vel=None):
+  def __init__(self, controller, pos, radius, vel=None):
+    self.controller = controller
     self.body = pymunk.Body(mass=pi*radius**2, moment=float('inf'))
     self.body.position = Vec2d(pos)
     self.body.velocity = Vec2d(vel)
@@ -40,8 +47,69 @@ class Blob(PhysicsEntity):
     self.shapes = [self.hitbox]
 
     self.radius = radius # note: calls setter
-    self.id = id(self)
+    #self.id = id(self) # set by Engine
 
+    self.label = pyglet.text.Label(
+      'OMG',
+      font_name='Times New Roman',
+      font_size=12,
+      x=0, y=2,
+      anchor_x='center', anchor_y='center'
+    )
+
+    self.firstTimeRender = True
+
+
+  def update(self, dt):
+    if self.radius >= self.minRadius:
+      actions = self.controller.actions(dt)
+
+      if 'shots' in actions:
+        return {
+          'add Entities' : [ self.shoot(ejectVel) for ejectVel in actions['shots'] ]
+        }
+    # else:
+    #   print 'too small'
+
+    return {}
+
+  def shoot(self, ejectVel):
+    massEjectProportion = 0.10  # 10%
+    assert 0 < massEjectProportion < 1
+    assert ejectVel
+    mass_eject = self.body.mass *      massEjectProportion
+    mass_self  = self.body.mass * (1 - massEjectProportion)
+    radius = sqrt(mass_eject / pi)
+    offset = Vec2d(ejectVel)
+    offset.length = self.radius + radius + 0.0001
+
+
+    originalVelocity = Vec2d(self.body.velocity)
+    self.body.velocity = (mass_self*self.body.velocity - mass_eject*ejectVel) / (mass_self)  # conservation of momentum
+    self.radius = sqrt(mass_self / pi)
+
+
+    return Blob(
+      Controller,
+      self.body.position + offset,
+      radius,
+      ejectVel + originalVelocity
+    )
+
+  def draw(self):
+    with shiftView(self.body.position):
+      gl.glColor3f(*self.colour)
+      gl.glBegin(gl.GL_TRIANGLE_FAN)
+      for point in self.bodyVerticies:
+        gl.glVertex2f(*point)
+      gl.glEnd()
+
+      # self.label.font_size = self.radius * .5
+      self.label.text = str(self.id)
+      self.label.draw()
+
+  def __repr__(self):
+    return 'Blob{0}'.format(self.id)
 
   # def setupVertexLists(self, batch):
     # vertex lists
@@ -54,7 +122,7 @@ class Blob(PhysicsEntity):
     # )
 
     # self.vertexLists = [ self.bodyVertexList ]
-    self.vertexLists = []
+    # self.vertexLists = []
 
     # self.lineVertexList = game.engine.drawLayersBatch[self.drawLayer].add(
     #   2,
@@ -63,19 +131,3 @@ class Blob(PhysicsEntity):
     #   ('v2f/stream', list(chain(*[self.pos, self.pos+Vec2d(30, 0).rotated(self.input.currentAim)]))),      # verticies
     #   ('c3f/static', self.lineColour * 2), # colour for each vertex (all the same)
     # )
-
-
-  def draw(self):
-    # self.bodyVertexList.vertices = list(chain(*[v*random.random()+self.body.position for v in self.bodyVerticies]))
-    with shiftView(self.body.position):
-      gl.glColor3f(*self.colour)
-      gl.glBegin(gl.GL_TRIANGLE_FAN)
-      # gl.glVertex2f(0, 0)
-      # for i in xrange(0, 365, 5):
-      #   gl.glVertex2f(*self.size.rotated_degrees(i))
-      for point in self.bodyVerticies:
-        gl.glVertex2f(*point)
-      gl.glEnd()
-
-  def __repr__(self):
-    return 'Blob{0}'.format(self.id)

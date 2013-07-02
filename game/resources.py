@@ -4,7 +4,7 @@ from pyglet import resource
 from pyglet.resource import file as resourceOpen
 from pymunk import Vec2d, Space
 
-
+from controllers import allControllers
 
 
 basePath = 'game/resources/'
@@ -17,6 +17,7 @@ chrashOnFail = True # TODO: move this to a config
 
 # Entities
 from Entities.Blob import Blob
+
 constructors = { # To construct the entities when we load a level from a file
   'Blob' : Blob,
 }
@@ -35,7 +36,7 @@ def loadEntities(levelName):
       if line.strip().startswith('#'): continue # skip comment lines
 
       try:
-        data = literal_eval(line)
+        data = list(literal_eval(line))
       except:
         print lineErr, "This line could not be parsed:", line
         continue
@@ -46,6 +47,14 @@ def loadEntities(levelName):
         print lineErr, "Possible types:", constructors.keys()
         continue
       constructor = constructors[entityType]
+
+      if issubclass(constructor, Blob):
+        controller = args[0]
+        if controller not in allControllers:
+          print lineErr, "This is not a valid controller:", controller
+          print lineErr, "Possible controllers:", allControllers.keys()
+          raise Exception("{0} This is not a valid controller: '{1}'".format(lineErr, controller))
+        args[0] = allControllers[controller]
 
       try:
         newEntity = constructor(*args)

@@ -1,20 +1,23 @@
 
-'Blob', (100, 100), 20, ( 20, 0)
-'Blob', (150, 145), 30, (-20, 0)
+'Blob', 'Controller', (100, 100), 20, ( 20, 0)
+'Blob', 'Controller', (150, 145), 30, (-20, 0)
 
-'Blob', (100, 250), 20, ( 20, 0)
-'Blob', (200, 250), 30, (-20, 0)
+'Blob', 'Controller', (100, 250), 20, ( 20, 0)
+'Blob', 'Controller', (200, 250), 30, (-20, 0)
 
 # edge case: same size
-'Blob', (100, 350), 30, ( 20, 0)
-'Blob', (200, 350), 30, (-20, 0)
+'Blob', 'Controller', (100, 350), 30, ( 20, 0)
+'Blob', 'Controller', (200, 350), 30, (-20, 0)
 
 # two small things into a big thing
-'Blob', (400, 100), 30
-'Blob', (300, 100), 20, ( 20, 0)
-'Blob', (500, 100), 20, (-20, 0)
+'Blob', 'Controller', (400, 100), 30
+'Blob', 'Controller', (300, 100), 20, ( 20, 0)
+'Blob', 'Controller', (500, 100), 20, (-20, 0)
 
 # A eating B eating C
-'Blob', (400, 200), 30
-'Blob', (470, 200), 20, (-10, 0)
-'Blob', (515, 200), 10, (-20, 0)
+'Blob', 'Controller', (400, 250), 30
+'Blob', 'Controller', (452, 250), 20
+'Blob', 'Controller', (515, 250), 10, (-20, 0)
+
+# a different controller
+'Blob', 'ShootPeriodically', (400, 350), 30

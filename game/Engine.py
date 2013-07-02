@@ -16,8 +16,8 @@ import Entities
 from Entities.Blob import Blob
 
 def assertClose(a, b):
-  somethingSmall = (abs(a)+abs(b))*0.0001
-  assert abs(a-b) <= somethingSmall, "physics error"
+  errorMargin = (abs(a)+abs(b))*0.0001 + 0.0001
+  assert abs(a-b) <= errorMargin, "physics error. should be {0} but is {1}".format(a,b)
 
 class Engine:
 
@@ -59,6 +59,7 @@ class Engine:
 
     self.shapeToEntity = {} # a dict that gives the entity that contains the keyed shape
     self.blobs = {}         # a dict from blob.id to blob
+    self.highestBlobId = 0
 
     # Window
     config = gl.Config(
@@ -129,10 +130,9 @@ class Engine:
       self._processAdding()
 
       # DEBUG: test for physics consistency
-
-      momentum = sum([ e.body.mass * e.body.velocity  for e in self.blobs.itervalues() ])
-      assertClose(self.physCheck_mass,    sum([ e.body.mass                    for e in self.blobs.itervalues() ]))
-      assertClose(self.physCheck_area,    sum([ math.pi * e.radius**2     for e in self.blobs.itervalues() ]))
+      momentum =                        sum([ e.body.mass * e.body.velocity for e in self.blobs.itervalues() ])
+      assertClose(self.physCheck_mass,  sum([ e.body.mass                   for e in self.blobs.itervalues() ]))
+      assertClose(self.physCheck_area,  sum([ math.pi * e.radius**2         for e in self.blobs.itervalues() ]))
       assertClose(self.physCheck_mometum.x, momentum.x)
       assertClose(self.physCheck_mometum.y, momentum.y)
 
@@ -190,6 +190,9 @@ class Engine:
         if hasattr(e, 'draw'):
           self.drawCalls[e.drawLayer].append(e.draw)
       if isinstance(e, Blob):
+        self.highestBlobId += 1
+        e.controller = e.controller(e, self.blobs)  # initialize the controller
+        e.id = self.highestBlobId
         self.blobs[e.id] = e
 
   def _processRemoving(self):

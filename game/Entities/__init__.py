@@ -11,5 +11,5 @@ def hasAttrs(e, conditionAttr, *sideAttrs):
 
 # ducktype tests
 def isEntityKind_physics(e):  return hasAttrs(e, 'body', 'shapes')
-def isEntityKind_visible(e):  return hasAttrs(e, 'drawLayer', 'vertexLists')
-def isEntityKind_updating(e): return hasAttrs(e, 'updating')
+def isEntityKind_visible(e):  return hasAttrs(e, 'drawLayer')#, 'vertexLists')
+def isEntityKind_updating(e): return hasAttrs(e, 'update')
