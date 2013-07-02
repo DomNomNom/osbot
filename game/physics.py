@@ -23,17 +23,17 @@ for i, layerClasses in enumerate(collisionLayers):
   for cls in layerClasses:
     physicsClass.collisionBitmask += 2**i
 
-def quadratic(a, b, c):
+def quadraticFormula(a, b, c):
   return (-b + sqrt(b**2 - 4*a*c)) / (2*a)
 
-shapeToEntity = {}
-def createSpace(shapeToEntityMap):
-  global shapeToEntity
-  shapeToEntity = shapeToEntityMap
+engine = None
+def createSpace(engine_):
+  global engine
+  engine = engine_
+
   space = Space()
   space.gravity = Vec2d(0.0, 0.0)
   PhysicsEntity.body = space.static_body
-
 
   # attach collision handlers (defined at the end of the file)
   space.add_collision_handler(
@@ -46,10 +46,11 @@ def createSpace(shapeToEntityMap):
 
   return space
 
+
 def handler_blob(space, arbiter, *args, **kwargs):
 
-  blob_1 = shapeToEntity[arbiter.shapes[0]]
-  blob_2 = shapeToEntity[arbiter.shapes[1]]
+  blob_1 = engine.shapeToEntity[arbiter.shapes[0]]
+  blob_2 = engine.shapeToEntity[arbiter.shapes[1]]
   # print 'omgwtf: ', repr(random.shuffle([blob_1, blob_2]))
 
 
@@ -61,16 +62,28 @@ def handler_blob(space, arbiter, *args, **kwargs):
     big, sml = blobs
     print 'Collision with equal sizes between {0} and {1}'.format(blob_1.id, blob_2.id) # DEBUG
 
+  big_mass = big.body.mass
+  sml_mass = sml.body.mass
+  P_big = big_mass * big.body.velocity
+  P_sml = sml_mass * sml.body.velocity
+  P = P_big + P_sml   # total momentum
+
   d = (big.body.position - sml.body.position).length # distance
   B = big.radius**2 + sml.radius**2 # == area / pi
   if d <= sqrt(B): # if we can't fit both, OMNOMNOM
     big.radius = sqrt(B)
-    sml.radius = 0 # DIE!
+    big.body.velocity = (P_big + P_sml) / (big_mass + sml_mass)  # conservation of momentum
+    engine.removeEntity(sml) # DIE!
   else:
-    newBigRadius = quadratic(1, -d, -.5*(B-d**2)) # mathemagic to keep area consisteny and havethe circles not touching
+    newBigRadius = quadraticFormula(1, -d, -.5*(B-d**2)) # mathemagic to keep area consisteny and have the circles barely not touching
     if newBigRadius < big.radius: # we are clearly moving away from each other
       return False
     big.radius = newBigRadius
     sml.radius = d - newBigRadius
+
+    transferred_mass = big.body.mass - big_mass
+    big.body.velocity = (P_big + transferred_mass*sml.body.velocity) / (big_mass + transferred_mass)
+    # conservation of momentum
+    # big.body.velocity = Vec2d()
 
   return False

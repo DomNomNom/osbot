@@ -4,6 +4,7 @@ from pymunk import Vec2d
 
 
 from itertools import chain
+from math import pi
 
 from Entity import PhysicsEntity
 from  game.Camera import shiftView
@@ -17,8 +18,10 @@ class Blob(PhysicsEntity):
 
   def radius_get(self):  return self._radius
   def radius_set(self, radius):
-    assert radius >= 0
+    assert radius > 0
     self._radius = radius
+    self.hitbox.unsafe_set_radius(radius)
+    self.body.mass = pi * radius**2
     self.radiusVector = Vec2d(radius, 0)
     self.bodyVerticies = [Vec2d()] # recalculate verticies (this could be done with a matrix transform)
     for i in xrange(0, 365, 5):
@@ -28,10 +31,7 @@ class Blob(PhysicsEntity):
 
 
   def __init__(self, pos, radius, vel=None):
-    self.radius = radius # note: calls setter
-    self.id = id(self)
-
-    self.body = pymunk.Body(self.mass, float('inf'))
+    self.body = pymunk.Body(mass=pi*radius**2, moment=float('inf'))
     self.body.position = Vec2d(pos)
     self.body.velocity = Vec2d(vel)
     self.hitbox = pymunk.Circle(self.body, radius)
@@ -39,6 +39,8 @@ class Blob(PhysicsEntity):
     self.hitbox.collision_type = Blob.collisionType
     self.shapes = [self.hitbox]
 
+    self.radius = radius # note: calls setter
+    self.id = id(self)
 
 
   # def setupVertexLists(self, batch):
@@ -66,7 +68,7 @@ class Blob(PhysicsEntity):
   def draw(self):
     # self.bodyVertexList.vertices = list(chain(*[v*random.random()+self.body.position for v in self.bodyVerticies]))
     with shiftView(self.body.position):
-      gl.glColor3f(1.0, 0.0, 0.0)
+      gl.glColor3f(*self.colour)
       gl.glBegin(gl.GL_TRIANGLE_FAN)
       # gl.glVertex2f(0, 0)
       # for i in xrange(0, 365, 5):
@@ -75,3 +77,5 @@ class Blob(PhysicsEntity):
         gl.glVertex2f(*point)
       gl.glEnd()
 
+  def __repr__(self):
+    return 'Blob{0}'.format(self.id)

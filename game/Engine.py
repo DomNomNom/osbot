@@ -1,5 +1,6 @@
-from code import InteractiveConsole
 import time
+import math
+from code import InteractiveConsole
 
 import pyglet.gl as gl
 from pyglet.graphics import Batch
@@ -12,7 +13,11 @@ from Camera import Camera
 import physics
 import resources
 import Entities
+from Entities.Blob import Blob
 
+def assertClose(a, b):
+  somethingSmall = (abs(a)+abs(b))*0.0001
+  assert abs(a-b) <= somethingSmall, "physics error"
 
 class Engine:
 
@@ -53,6 +58,7 @@ class Engine:
     self.accumulatedFrameTime = 0.
 
     self.shapeToEntity = {} # a dict that gives the entity that contains the keyed shape
+    self.blobs = {}         # a dict from blob.id to blob
 
     # Window
     config = gl.Config(
@@ -114,11 +120,22 @@ class Engine:
         response = entity.update(self.updateRate) # update all entities
         if response:
           self.entityAddQueue += response.get("add Entities", [])
-          self.entityAddQueue += response.get("del Entities", [])
+          self.entityDelQueue += response.get("del Entities", [])
       self._processRemoving()
       self._processAdding()
 
       self.space.step(self.updateRate) # this will do the physics
+      self._processRemoving()
+      self._processAdding()
+
+      # DEBUG: test for physics consistency
+
+      momentum = sum([ e.body.mass * e.body.velocity  for e in self.blobs.itervalues() ])
+      assertClose(self.physCheck_mass,    sum([ e.body.mass                    for e in self.blobs.itervalues() ]))
+      assertClose(self.physCheck_area,    sum([ math.pi * e.radius**2     for e in self.blobs.itervalues() ]))
+      assertClose(self.physCheck_mometum.x, momentum.x)
+      assertClose(self.physCheck_mometum.y, momentum.y)
+
 
     ## DRAW ##
     gl.glClearColor(0,0,0, 0)
@@ -127,23 +144,30 @@ class Engine:
 
     self.camera.track() # does camera work (such as what it focuses on)
     for name in self.drawLayerNames:
-      shift = Vec2d() if name.startswith('UI') else None
       for func in self.drawCalls[name]:
         func()
-      with self.camera.shiftView(shift):
-        self.drawLayers[name].draw()
+      # shift = Vec2d() if name.startswith('UI') else None
+      # with self.camera.shiftView(shift):
+      #   self.drawLayers[name].draw()
+
 
     self.fps_display.draw()
     #self.window.flip()
 
   def loadLevel(self, levelName):
     # Initialize physics
-    self.space = physics.createSpace(self.shapeToEntity)
+    self.space = physics.createSpace(self)
 
     # load the entities
     for e in resources.loadEntities(levelName):
       self.addEntity(e)
 
+    self._processAdding()
+    self._processRemoving()
+
+    self.physCheck_mass     = sum([ e.body.mass                    for e in self.blobs.itervalues() ])
+    self.physCheck_area     = sum([ math.pi * e.radius**2     for e in self.blobs.itervalues() ])
+    self.physCheck_mometum  = sum([ e.body.mass * e.body.velocity  for e in self.blobs.itervalues() ])
 
   def addEntity(   self, e):  self.entityAddQueue.append(e)
   def removeEntity(self, e):  self.entityDelQueue.append(e)
@@ -160,11 +184,13 @@ class Engine:
           self.shapeToEntity[shape] = e
         if e.body is not self.space.static_body:
           self.space.add(e.body)
-      if e.drawLayer is not None:
+      if Entities.isEntityKind_visible(e):
         # e.setupVertexLists(self.drawLayers[e.drawLayer])
         # assert hasattr(e, 'vertexLists')
         if hasattr(e, 'draw'):
           self.drawCalls[e.drawLayer].append(e.draw)
+      if isinstance(e, Blob):
+        self.blobs[e.id] = e
 
   def _processRemoving(self):
     while len(self.entityDelQueue):
@@ -184,6 +210,8 @@ class Engine:
       if Entities.isEntityKind_visible(e):
         # self.drawLayers[e.drawLayer].remove(e)
         if hasattr(e, 'draw'):
-          self.drawCalls[e.drawLayer].remove(e)
+          self.drawCalls[e.drawLayer].remove(e.draw)
         # for vertexList in e.vertexLists:
         #   vertexList.delete()
+      if isinstance(e, Blob):
+        del self.blobs[e.id]
