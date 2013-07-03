@@ -17,9 +17,11 @@ chrashOnFail = True # TODO: move this to a config
 
 # Entities
 from Entities.Blob import Blob
+from Entities.Wall import Wall
 
 constructors = { # To construct the entities when we load a level from a file
   'Blob' : Blob,
+  'Wall' : Wall,
 }
 
 
@@ -43,16 +45,13 @@ def loadEntities(levelName):
 
       entityType, args = data[0], data[1:]
       if entityType not in constructors:
-        print lineErr, "This is not a valid entity type:", entityType
-        print lineErr, "Possible types:", constructors.keys()
-        continue
+        raise Exception("{0} This is not a entity type: '{1}'".format(lineErr, entityType))
+
       constructor = constructors[entityType]
 
       if issubclass(constructor, Blob):
         controller = args[0]
         if controller not in allControllers:
-          print lineErr, "This is not a valid controller:", controller
-          print lineErr, "Possible controllers:", allControllers.keys()
           raise Exception("{0} This is not a valid controller: '{1}'".format(lineErr, controller))
         args[0] = allControllers[controller]
 

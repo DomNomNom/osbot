@@ -3,16 +3,18 @@ import random
 from pymunk import Vec2d, Space
 
 from Entities.Blob import Blob
+from Entities.Wall import Wall
 from Entities.Entity import PhysicsEntity
 
 from math import sqrt, pi
 
 
 # Initialize each class with a unique number and a bitmask for its collision layers
-allPhysicsEntities = [Blob]
+allPhysicsEntities = [Blob, Wall]
 
 collisionLayers = [
   [Blob], # Blob with other Blobs
+  [Blob, Wall] # bounce off walls
 ]
 
 for i, physicsClass in enumerate(allPhysicsEntities):
@@ -20,8 +22,9 @@ for i, physicsClass in enumerate(allPhysicsEntities):
   physicsClass.collisionBitmask = 0
 
 for i, layerClasses in enumerate(collisionLayers):
-  for cls in layerClasses:
-    physicsClass.collisionBitmask += 2**i
+  for physicsClass in layerClasses:
+    physicsClass.collisionBitmask |= 2**i
+
 
 def quadraticFormula(a, b, c):
   return (-b + sqrt(b**2 - 4*a*c)) / (2*a)
@@ -43,9 +46,18 @@ def createSpace(engine_):
     # separate = handler_blob
     pre_solve = handler_blob
   )
+  # space.add_collision_handler(
+  #   Blob.collisionType,
+  #   Wall.collisionType,
+  #   pre_solve = handler_wall,
+  # )
+
 
   return space
 
+def handler_wall(space, arbiter, *args, **kwargs):
+  print 'omg collision'
+  return True
 
 def handler_blob(space, arbiter, *args, **kwargs):
 

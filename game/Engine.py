@@ -130,11 +130,11 @@ class Engine:
       self._processAdding()
 
       # DEBUG: test for physics consistency
-      momentum =                        sum([ e.body.mass * e.body.velocity for e in self.blobs.itervalues() ])
-      assertClose(self.physCheck_mass,  sum([ e.body.mass                   for e in self.blobs.itervalues() ]))
-      assertClose(self.physCheck_area,  sum([ math.pi * e.radius**2         for e in self.blobs.itervalues() ]))
-      assertClose(self.physCheck_mometum.x, momentum.x)
-      assertClose(self.physCheck_mometum.y, momentum.y)
+      # momentum =                        sum([ e.body.mass * e.body.velocity for e in self.blobs.itervalues() ])
+      # assertClose(self.physCheck_mass,  sum([ e.body.mass                   for e in self.blobs.itervalues() ]))
+      # assertClose(self.physCheck_area,  sum([ math.pi * e.radius**2         for e in self.blobs.itervalues() ]))
+      # assertClose(self.physCheck_mometum.x, momentum.x)
+      # assertClose(self.physCheck_mometum.y, momentum.y)
 
 
     ## DRAW ##
@@ -165,9 +165,9 @@ class Engine:
     self._processAdding()
     self._processRemoving()
 
-    self.physCheck_mass     = sum([ e.body.mass                    for e in self.blobs.itervalues() ])
-    self.physCheck_area     = sum([ math.pi * e.radius**2     for e in self.blobs.itervalues() ])
-    self.physCheck_mometum  = sum([ e.body.mass * e.body.velocity  for e in self.blobs.itervalues() ])
+    self.physCheck_mass     = sum([ e.body.mass                   for e in self.blobs.itervalues() ])
+    self.physCheck_area     = sum([ math.pi * e.radius**2         for e in self.blobs.itervalues() ])
+    self.physCheck_mometum  = sum([ e.body.mass * e.body.velocity for e in self.blobs.itervalues() ])
 
   def addEntity(   self, e):  self.entityAddQueue.append(e)
   def removeEntity(self, e):  self.entityDelQueue.append(e)

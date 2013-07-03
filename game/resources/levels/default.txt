@@ -1,23 +1,13 @@
 
-'Blob', 'Controller', (100, 100), 20, ( 20, 0)
-'Blob', 'Controller', (150, 145), 30, (-20, 0)
 
-'Blob', 'Controller', (100, 250), 20, ( 20, 0)
-'Blob', 'Controller', (200, 250), 30, (-20, 0)
+'Blob', 'ShootPeriodically', (200, 350), 30
 
-# edge case: same size
-'Blob', 'Controller', (100, 350), 30, ( 20, 0)
-'Blob', 'Controller', (200, 350), 30, (-20, 0)
+'Blob' ,'ShootRandomly', (200, 150), 30
 
-# two small things into a big thing
-'Blob', 'Controller', (400, 100), 30
-'Blob', 'Controller', (300, 100), 20, ( 20, 0)
-'Blob', 'Controller', (500, 100), 20, (-20, 0)
+'Blob' ,'ShootRandomly', (100, 150), 30
 
-# A eating B eating C
-'Blob', 'Controller', (400, 250), 30
-'Blob', 'Controller', (452, 250), 20
-'Blob', 'Controller', (515, 250), 10, (-20, 0)
-
-# a different controller
-'Blob', 'ShootPeriodically', (400, 350), 30
+# a box around the screen
+'Wall', (-10, 300), ( 10, 300)
+'Wall', (650, 300), ( 10, 300)
+'Wall', (300, -10), (400,  10)
+'Wall', (300, 490), (400,  10)

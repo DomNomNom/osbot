@@ -29,6 +29,7 @@ class Blob(PhysicsEntity):
     self.hitbox.unsafe_set_radius(radius)
     self.body.mass = pi * radius**2
     self.radiusVector = Vec2d(radius, 0)
+    self.circleStepsize = int(0.9*360/radius)
     self.bodyVerticies = [Vec2d()] # recalculate verticies (this could be done with a matrix transform)
     for i in xrange(0, 360+self.circleStepsize, self.circleStepsize):
       self.bodyVerticies.append(self.radiusVector.rotated_degrees(i))
@@ -44,6 +45,7 @@ class Blob(PhysicsEntity):
     self.hitbox = pymunk.Circle(self.body, radius)
     self.hitbox.layers = Blob.collisionBitmask
     self.hitbox.collision_type = Blob.collisionType
+    self.hitbox.elasticity = 0.9
     self.shapes = [self.hitbox]
 
     self.radius = radius # note: calls setter
