@@ -1,14 +1,13 @@
 # for saving and loading
 from ast import literal_eval
 from pyglet import resource
-from pyglet.resource import file as resourceOpen
+# from pyglet.resource import file as resource.file
 from pymunk import Vec2d, Space
 
 from controllers import allControllers
 
 
-basePath = 'game/resources/'
-resource.path = [basePath]
+resource.path = ['game/resources/levels']
 resource.reindex()
 
 # a flag to chrash when anything goes wrong when the level isn't valid
@@ -30,7 +29,7 @@ constructors = { # To construct the entities when we load a level from a file
 def loadEntities(levelName):
   lineCount = 0
   entities = []
-  with resourceOpen('levels/'+levelName+'.txt') as levelFile:
+  with resource.file(levelName+'.txt') as levelFile:
     for line in levelFile:
       lineCount += 1
       lineErr = "(line " + str(lineCount) + ")"
@@ -70,5 +69,5 @@ def loadEntities(levelName):
 # def save(self):
 #   assert self.levelName
 #   # TODO: test whether this will create folders
-#   with resourceOpen('Levels/uncompressed/'+self.levelName+'/level.txt', 'w') as f:
+#   with resource.file('Levels/uncompressed/'+self.levelName+'/level.txt', 'w') as f:
 #     f.write('{0}\n'.format(repr(entity)))
