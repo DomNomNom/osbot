@@ -66,7 +66,7 @@ class Blob(PhysicsEntity):
     if self.radius >= self.minRadius:
       actions = self.controller.actions(dt)
 
-      if 'shots' in actions:
+      if actions and 'shots' in actions:
         return {
           'add Entities' : [ self.shoot(ejectVel) for ejectVel in actions['shots'] ]
         }

@@ -4,7 +4,7 @@
 
 'Blob' ,'ShootRandomly', (200, 150), 30
 
-'Blob' ,'ShootRandomly', (100, 150), 30
+# 'Blob' ,'HAAAX', (100, 150), 30
 
 # a box around the screen
 'Wall', (-10, 300), ( 10, 300)

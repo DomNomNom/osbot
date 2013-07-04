@@ -1,6 +1,6 @@
 import time
 import math
-from code import InteractiveConsole
+
 
 import pyglet.gl as gl
 from pyglet.graphics import Batch
@@ -14,6 +14,7 @@ import physics
 import resources
 import Entities
 from Entities.Blob import Blob
+from utils import liveInspect
 
 def assertClose(a, b):
   errorMargin = (abs(a)+abs(b))*0.0001 + 0.0001
@@ -22,7 +23,7 @@ def assertClose(a, b):
 class Engine:
 
   def __init__(self):
-    self.updateRate = 1/120. # how often our physics will kick in (in seconds)
+    self.updateRate = 1/60. # how often our physics will kick in (in seconds)
 
     # groups of entities
     self.groups = {
@@ -47,10 +48,6 @@ class Engine:
     # A dict from drawLayerNames to a Batch of entities. they are mutually exclusive
     self.drawLayers = { name : Batch()  for name in self.drawLayerNames }
     self.drawCalls =  { name : []       for name in self.drawLayerNames }
-    # self.drawLayersBatch = {} #a dict from drawLayerNames to a list of batches
-    # for name in self.drawLayerNames:
-    #   self.drawLayers[name] = set()
-    #   self.drawLayersBatch[name] = Batch()
 
     self.levelStartTime = time.time()
     self.levelTime = 0. # TODO proper pausing (maybe move to gameState or some level class)
@@ -91,11 +88,7 @@ class Engine:
     @self.window.event
     def on_key_press(symbol, modifiers):
       if symbol==key.QUOTELEFT and modifiers & key.MOD_CTRL:
-        ic = InteractiveConsole(globals())
-        try:
-          ic.interact("Welcome to the scripting console! press ctrl+D to resume the game")
-        except SystemExit, e:
-          exit()
+        liveInspect(globals())
 
     self.fps_display = clock.ClockDisplay()
 
@@ -129,10 +122,10 @@ class Engine:
       self._processRemoving()
       self._processAdding()
 
-      # DEBUG: test for physics consistency
+      # DEBUG: test for physics consistency. Disabled as bouncing off Walls changes momentum
       # momentum =                        sum([ e.body.mass * e.body.velocity for e in self.blobs.itervalues() ])
-      # assertClose(self.physCheck_mass,  sum([ e.body.mass                   for e in self.blobs.itervalues() ]))
-      # assertClose(self.physCheck_area,  sum([ math.pi * e.radius**2         for e in self.blobs.itervalues() ]))
+      assertClose(self.physCheck_mass,  sum([ e.body.mass                   for e in self.blobs.itervalues() ]))
+      assertClose(self.physCheck_area,  sum([ math.pi * e.radius**2         for e in self.blobs.itervalues() ]))
       # assertClose(self.physCheck_mometum.x, momentum.x)
       # assertClose(self.physCheck_mometum.y, momentum.y)
 
