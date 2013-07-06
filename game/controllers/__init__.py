@@ -12,3 +12,4 @@ for loader, module_name, is_pkg in  pkgutil.walk_packages(__path__):
     allControllers.update(
         inspect.getmembers(module, lambda x: inspect.isclass(x) and hasattr(x, 'actions'))
     )
+

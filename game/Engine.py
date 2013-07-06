@@ -13,12 +13,16 @@ from Camera import Camera
 import physics
 import resources
 import Entities
+import levelCreator
 from Entities.Blob import Blob
 from utils import liveInspect
 
+
+# a function to test whether physics values are in acceptable bounds
 def assertClose(a, b):
   errorMargin = (abs(a)+abs(b))*0.0001 + 0.0001
   assert abs(a-b) <= errorMargin, "physics error. should be {0} but is {1}".format(a,b)
+
 
 class Engine:
 
@@ -88,7 +92,7 @@ class Engine:
     @self.window.event
     def on_key_press(symbol, modifiers):
       if symbol==key.QUOTELEFT and modifiers & key.MOD_CTRL:
-        liveInspect(globals())
+        liveInspect(self)
 
     self.fps_display = clock.ClockDisplay()
 
@@ -111,14 +115,15 @@ class Engine:
       self.accumulatedFrameTime -= self.updateRate
       self.levelTime = time.time() - self.levelStartTime
       for entity in self.groups['updating']:
-        response = entity.update(self.updateRate) # update all entities
+        # update all entities, this should not change the state
+        response = entity.update(self.updateRate)
         if response:
           self.entityAddQueue += response.get("add Entities", [])
           self.entityDelQueue += response.get("del Entities", [])
       self._processRemoving()
       self._processAdding()
 
-      self.space.step(self.updateRate) # this will do the physics
+      self.space.step(self.updateRate) # this will do the physics and apply all actions
       self._processRemoving()
       self._processAdding()
 
@@ -151,8 +156,11 @@ class Engine:
     # Initialize physics
     self.space = physics.createSpace(self)
 
+    # self.levelCreator = resources.loadEntities
+    self.levelCreator = levelCreator.createLevel
+
     # load the entities
-    for e in resources.loadEntities(levelName):
+    for e in self.levelCreator(levelName):
       self.addEntity(e)
 
     self._processAdding()
