@@ -11,6 +11,8 @@ Rules of a Controller:
 
 class Controller(object):
 
+  # colour = (1., 0., 1.) # will automatically be set for each class by __init__.py
+
   def __init__(self, blob, blobs):
     self.blob  = blob
     self.blobs = blobs
@@ -21,19 +23,3 @@ class Controller(object):
 
   def actions(self, dt):
     return { 'shots': [] }
-
-
-
-class ShootPeriodically(Controller):
-  def start(self):
-    self.time = 0
-    self.shoot_interval = 0.2
-    self.shoot_next = self.shoot_interval
-
-  def actions(self, dt):
-    self.time += dt
-    if self.time >= self.shoot_next:
-      self.shoot_next += self.shoot_interval
-      return { 'shots' : [Vec2d(100,0)] }
-    return {}
-

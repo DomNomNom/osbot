@@ -3,7 +3,7 @@ import random
 import pymunk
 from pymunk import Vec2d
 
-from controllers import allControllers
+import controllers
 
 # Entities
 from Entities.Blob import Blob
@@ -14,8 +14,7 @@ from Entities.Wall import Wall
 wd = 640
 ht = 480
 
-allControllerNames = allControllers.values()
-
+allControllerNames = controllers.allControllers.values()
 
 def randomizeCircle(circle):
     radius = 20 + random.random()*10

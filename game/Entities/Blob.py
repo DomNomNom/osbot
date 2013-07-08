@@ -9,14 +9,12 @@ from pymunk import Vec2d
 
 from Entity import PhysicsEntity
 from game.Camera import shiftView
-from game.controllers.base import Controller
+import game.controllers as controllers
 
 
 class Blob(PhysicsEntity):
 
   drawLayer = 'game'
-
-  colour = (1, 0, 0)
 
   circleStepsize = 10 # degrees for drawing
 
@@ -92,7 +90,7 @@ class Blob(PhysicsEntity):
 
 
     return Blob(
-      Controller,
+      controllers.Controller,
       self.body.position + offset,
       radius,
       ejectVel + originalVelocity
@@ -100,7 +98,7 @@ class Blob(PhysicsEntity):
 
   def draw(self):
     with shiftView(self.body.position):
-      gl.glColor3f(*self.colour)
+      gl.glColor3f(*self.controller.colour)
       gl.glBegin(gl.GL_TRIANGLE_FAN)
       for point in self.bodyVerticies:
         gl.glVertex2f(*point)
