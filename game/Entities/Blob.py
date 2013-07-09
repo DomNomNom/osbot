@@ -66,35 +66,13 @@ class Blob(PhysicsEntity):
 
       if actions and 'shots' in actions:
         return {
-          'add Entities' : [ self.shoot(ejectVel) for ejectVel in actions['shots'] ]
+          'shots' : actions['shots']
+          #'add Entities' : [ self.shoot(ejectVel) for ejectVel in actions['shots'] ]
         }
-    # else:
-    #   print 'too small'
 
     return {}
 
-  def shoot(self, ejectVel):
-    massEjectProportion = 0.10  # 10%
-    assert 0 < massEjectProportion < 1
-    assert ejectVel
-    mass_eject = self.body.mass *      massEjectProportion
-    mass_self  = self.body.mass * (1 - massEjectProportion)
-    radius = sqrt(mass_eject / pi)
-    offset = Vec2d(ejectVel)
-    offset.length = self.radius + radius + 0.0001
 
-
-    originalVelocity = Vec2d(self.body.velocity)
-    self.body.velocity = (mass_self*self.body.velocity - mass_eject*ejectVel) / (mass_self)  # conservation of momentum
-    self.radius = sqrt(mass_self / pi)
-
-
-    return Blob(
-      controllers.Controller,
-      self.body.position + offset,
-      radius,
-      ejectVel + originalVelocity
-    )
 
   def draw(self):
     with shiftView(self.body.position):

@@ -114,12 +114,19 @@ class Engine:
     while self.accumulatedFrameTime >= self.updateRate:
       self.accumulatedFrameTime -= self.updateRate
       self.levelTime = time.time() - self.levelStartTime
+      shotList = []
       for entity in self.groups['updating']:
         # update all entities, this should not change the state
         response = entity.update(self.updateRate)
         if response:
           self.entityAddQueue += response.get("add Entities", [])
           self.entityDelQueue += response.get("del Entities", [])
+          shots = response.get("shots", [])
+          if shots:
+            shotList.append((entity, shots))
+      for entity, shots in shotList:
+        for shot in shots:
+          self.entityAddQueue.append(physics.shoot(entity, shot))
       self._processRemoving()
       self._processAdding()
 

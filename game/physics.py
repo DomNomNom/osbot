@@ -2,6 +2,8 @@ import random
 
 from pymunk import Vec2d, Space
 
+import controllers
+
 from Entities.Blob import Blob
 from Entities.Wall import Wall
 from Entities.Entity import PhysicsEntity
@@ -21,13 +23,11 @@ for i, physicsClass in enumerate(allPhysicsEntities):
   physicsClass.collisionType = i
   physicsClass.collisionBitmask = 0
 
+# initialzie collisionBitmasks from the layers
 for i, layerClasses in enumerate(collisionLayers):
   for physicsClass in layerClasses:
     physicsClass.collisionBitmask |= 2**i
 
-
-def quadraticFormula(a, b, c):
-  return (-b + sqrt(b**2 - 4*a*c)) / (2*a)
 
 engine = None
 def createSpace(engine_):
@@ -52,12 +52,34 @@ def createSpace(engine_):
   #   pre_solve = handler_wall,
   # )
 
-
   return space
 
-def handler_wall(space, arbiter, *args, **kwargs):
-  print 'omg collision'
-  return True
+massEjectProportion = 0.10  # 10% of the original mass gets ejected
+def shoot(blob, ejectVel):
+  if blob.radius < Blob.minRadius:
+    return
+  assert 0 < massEjectProportion < 1
+  assert ejectVel
+  mass_eject = blob.body.mass *      massEjectProportion
+  mass_blob  = blob.body.mass * (1 - massEjectProportion)
+  radius = sqrt(mass_eject / pi)
+  offset = Vec2d(ejectVel)
+  offset.length = blob.radius + radius + 0.0001
+
+  originalVelocity = Vec2d(blob.body.velocity)
+  blob.body.velocity = (mass_blob*blob.body.velocity - mass_eject*ejectVel) / (mass_blob)  # conservation of momentum
+  blob.radius = sqrt(mass_blob / pi)
+
+  return Blob(
+    controllers.Controller,
+    blob.body.position + offset,
+    radius,
+    ejectVel + originalVelocity
+  )
+
+
+def quadraticFormula(a, b, c):
+  return (-b + sqrt(b**2 - 4*a*c)) / (2*a)
 
 def handler_blob(space, arbiter, *args, **kwargs):
 
