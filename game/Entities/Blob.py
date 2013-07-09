@@ -16,21 +16,21 @@ class Blob(PhysicsEntity):
 
   drawLayer = 'game'
 
-  circleStepsize = 10 # degrees for drawing
+  softBorderRadius = 5 # how many pixels on the sides are just for a soft border?
 
-  minRadius = 5
+  # if smaller than this,
+  # the AI will not be run and no further propulsion is allowed
+  minRadius = 10
 
+  texture = pyglet.resource.image('blob.png')
+
+  # radius. (getter/setter)
   def radius_get(self):  return self._radius
   def radius_set(self, radius):
     assert radius > 0
     self._radius = radius
     self.hitbox.unsafe_set_radius(radius)
     self.body.mass = pi * radius**2
-    self.radiusVector = Vec2d(radius, 0)
-    self.circleStepsize = int(0.9*360/radius)
-    self.bodyVerticies = [Vec2d()] # recalculate verticies (this could be done with a matrix transform)
-    for i in xrange(0, 360+self.circleStepsize, self.circleStepsize):
-      self.bodyVerticies.append(self.radiusVector.rotated_degrees(i))
   radius = property(radius_get, radius_set)
 
 
@@ -63,28 +63,32 @@ class Blob(PhysicsEntity):
   def update(self, dt):
     if self.radius >= self.minRadius:
       actions = self.controller.actions(dt)
-
       if actions and 'shots' in actions:
         return {
           'shots' : actions['shots']
-          #'add Entities' : [ self.shoot(ejectVel) for ejectVel in actions['shots'] ]
         }
 
     return {}
 
 
+  def initGraphics(self, batch):
+    # TODO: use the controllers texture
+    self.sprite = pyglet.sprite.Sprite(Blob.texture, batch=batch)
+    self.sprite.color = self.controller.colour
+
 
   def draw(self):
-    with shiftView(self.body.position):
-      gl.glColor3f(*self.controller.colour)
-      gl.glBegin(gl.GL_TRIANGLE_FAN)
-      for point in self.bodyVerticies:
-        gl.glVertex2f(*point)
-      gl.glEnd()
+    self.sprite.color = [ x*255 for x in self.controller.colour ]
+    self.sprite.scale = self.radius*2 / (Blob.texture.width - 2*self.softBorderRadius)
+    self.sprite.set_position(
+      self.body.position.x - self.radius - self.softBorderRadius*self.sprite.scale + 1,
+      self.body.position.y - self.radius - self.softBorderRadius*self.sprite.scale + 1,
+    ) # note: the +1 at the end seems to make it more accurate to the old-style
 
-      # self.label.font_size = self.radius * .5
-      self.label.text = str(self.id)
-      self.label.draw()
+    # with shiftView(self.body.position):
+    #   self.label.font_size = self.radius * .5
+    #   self.label.text = str(self.id)
+    #   self.label.draw()
 
   def __repr__(self):
     return 'Blob{0}'.format(self.id)

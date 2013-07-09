@@ -14,7 +14,7 @@ from Entities.Wall import Wall
 wd = 640
 ht = 480
 
-allControllerNames = controllers.allControllers.values()
+allControllers = controllers.allControllers.values()
 
 def randomizeCircle(circle):
     radius = 20 + random.random()*10
@@ -37,7 +37,7 @@ def createLevel(levelName):
 
     # create blobs such that they don't intersect
     space = pymunk.Space()
-    for i in xrange(10):
+    for i in xrange(20):
         hitTest = pymunk.Circle(space.static_body, 1, Vec2d(-1, -1))
         randomizeCircle(hitTest)
 
@@ -50,12 +50,12 @@ def createLevel(levelName):
             print "no more space left when creating a level. stopping level creation"
             break
 
-        velocity = Vec2d(random.random() * 20, 0)
+        velocity = Vec2d(random.random() * 100, 0)
         velocity.rotate_degrees(random.random() * 360)
 
         space.add(hitTest)
         entities.append(Blob(
-            random.choice(allControllerNames),
+            random.choice(allControllers),
             hitTest.offset,
             hitTest.radius,
             vel=velocity,

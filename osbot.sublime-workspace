@@ -1,0 +1,1378 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"err",
+				"errorString"
+			],
+			[
+				"bo",
+				"bodyVerticies"
+			],
+			[
+				"all",
+				"allControllers"
+			],
+			[
+				"Contro",
+				"Controller"
+			],
+			[
+				"al",
+				"allControllers"
+			],
+			[
+				"ran",
+				"random"
+			],
+			[
+				"ra",
+				"random"
+			],
+			[
+				"rand",
+				"randomizeCircle"
+			],
+			[
+				"leve",
+				"levelCreator"
+			],
+			[
+				"vel",
+				"velocity"
+			],
+			[
+				"con",
+				"controller"
+			],
+			[
+				"cons",
+				"constructor"
+			],
+			[
+				"__",
+				"__all__"
+			],
+			[
+				"s",
+				"shoot_interval"
+			],
+			[
+				"bi",
+				"big_mass"
+			],
+			[
+				"som",
+				"somethingSmall"
+			],
+			[
+				"_proc",
+				"_processRemoving"
+			],
+			[
+				"blo",
+				"blobs"
+			],
+			[
+				"new",
+				"newBigRadius"
+			],
+			[
+				"in",
+				"intersectionDepth"
+			],
+			[
+				"sha",
+				"shapeToEntity"
+			],
+			[
+				"blob",
+				"blob_2"
+			],
+			[
+				"bl",
+				"blob_1"
+			],
+			[
+				"bit",
+				"collisionBitmask"
+			],
+			[
+				"ver",
+				"bodyVertexList"
+			],
+			[
+				"bod",
+				"bodyVertexList"
+			],
+			[
+				"col",
+				"collisionLayers"
+			],
+			[
+				"draw",
+				"drawCalls"
+			],
+			[
+				"load",
+				"loadEntities"
+			],
+			[
+				"collis",
+				"collisionBitmask"
+			],
+			[
+				"lay",
+				"layerClasses"
+			],
+			[
+				"clas",
+				"classes"
+			],
+			[
+				"has",
+				"hasattr"
+			],
+			[
+				"is",
+				"isEntityKind_physics"
+			],
+			[
+				"upda",
+				"updating"
+			],
+			[
+				"ad",
+				"entityAddQueue"
+			],
+			[
+				"dra",
+				"drawLayerNames"
+			],
+			[
+				"nu",
+				"numBits"
+			],
+			[
+				"num",
+				"numBits"
+			],
+			[
+				"back",
+				"background"
+			],
+			[
+				"ser",
+				"seriesIndex"
+			],
+			[
+				"sere",
+				"seriesIndex"
+			],
+			[
+				"S",
+				"StringProperty"
+			],
+			[
+				"matchte",
+				"matchTeamKeys"
+			],
+			[
+				"match",
+				"matchKey"
+			],
+			[
+				"matchK",
+				"matchKeyLink"
+			],
+			[
+				"mat",
+				"matchKey"
+			],
+			[
+				"redire",
+				"rediret"
+			],
+			[
+				"va",
+				"variables"
+			],
+			[
+				"fake",
+				"fakeAsPlayer"
+			],
+			[
+				"Mat",
+				"matchTeam"
+			],
+			[
+				"adm",
+				"adminStatus"
+			],
+			[
+				"Team",
+				"TeamMember"
+			],
+			[
+				"int",
+				"Interactive"
+			],
+			[
+				"play",
+				"playerCanEditMatch"
+			],
+			[
+				"canEditMa",
+				"canEditMachTeam"
+			],
+			[
+				"matchP",
+				"matchPlayers"
+			],
+			[
+				"pla",
+				"player"
+			],
+			[
+				"matchT",
+				"matchTeams"
+			],
+			[
+				"matcht",
+				"matchTeam"
+			],
+			[
+				"ma",
+				"match"
+			],
+			[
+				"matchteam",
+				"matchTeams"
+			],
+			[
+				"pl",
+				"player"
+			],
+			[
+				"cur",
+				"currentPlayer"
+			],
+			[
+				"ple",
+				"playerKeys"
+			],
+			[
+				"key",
+				"keyid"
+			],
+			[
+				"com",
+				"compile"
+			],
+			[
+				"tea",
+				"teamKey"
+			],
+			[
+				"get",
+				"getPlayers"
+			],
+			[
+				"_",
+				"_fail"
+			],
+			[
+				"winst",
+				"winStates"
+			],
+			[
+				"winn",
+				"winnerString"
+			],
+			[
+				"inte",
+				"IntegerProperty"
+			],
+			[
+				"req",
+				"request"
+			],
+			[
+				"temp",
+				"template_values"
+			],
+			[
+				"op",
+				"option	Tag"
+			],
+			[
+				"rea",
+				"ready"
+			],
+			[
+				"l",
+				"lookingForMorePlayers"
+			],
+			[
+				"whe",
+				"WHERE"
+			],
+			[
+				"team",
+				"teamMap"
+			],
+			[
+				"def",
+				"def	Function"
+			],
+			[
+				"compu",
+				"ComputedProperty"
+			],
+			[
+				"MAtch",
+				"MatchPlayer"
+			],
+			[
+				"crea",
+				"creator"
+			],
+			[
+				"tem",
+				"template_values"
+			],
+			[
+				"str",
+				"StringProperty"
+			],
+			[
+				"bor",
+				"border-left"
+			],
+			[
+				"mem",
+				"member"
+			],
+			[
+				"btn-",
+				"btn-success"
+			],
+			[
+				"st",
+				"state"
+			],
+			[
+				"no",
+				"notification"
+			],
+			[
+				"sta",
+				"state"
+			],
+			[
+				"steam",
+				"steamid64"
+			],
+			[
+				"requ",
+				"Request"
+			],
+			[
+				"join",
+				"joinRequest"
+			],
+			[
+				"sel",
+				"SELECT"
+			],
+			[
+				"togg",
+				"toggleButton"
+			],
+			[
+				"da",
+				"data"
+			],
+			[
+				"ge",
+				"get"
+			],
+			[
+				"bu",
+				"button"
+			],
+			[
+				"html",
+				"htmlTemplate"
+			],
+			[
+				"avail",
+				"avail"
+			],
+			[
+				"ava",
+				"availability"
+			],
+			[
+				"curr",
+				"current"
+			],
+			[
+				"day",
+				"dayStatus"
+			],
+			[
+				"Day",
+				"dayStatus"
+			],
+			[
+				"availa",
+				"availability"
+			],
+			[
+				"max",
+				"maxStatus"
+			],
+			[
+				"av",
+				"availability"
+			],
+			[
+				"Def",
+				"default"
+			],
+			[
+				"game",
+				"gameSelect"
+			],
+			[
+				"steamid",
+				"steamid64"
+			],
+			[
+				"ste",
+				"steamInfo"
+			],
+			[
+				"re",
+				"required"
+			],
+			[
+				"th",
+				"this"
+			],
+			[
+				"Tea",
+				"teamMember"
+			],
+			[
+				"curren",
+				"currentStatus"
+			],
+			[
+				"butto",
+				"buttonText"
+			],
+			[
+				"statu",
+				"statusTextMap"
+			],
+			[
+				"co",
+				"colorClassMap"
+			],
+			[
+				"colo",
+				"colorMap"
+			],
+			[
+				"stea",
+				"steamid64"
+			],
+			[
+				"G",
+				"GqlQuery"
+			],
+			[
+				"create",
+				"createGame"
+			],
+			[
+				"TR",
+				"Trackreckord"
+			],
+			[
+				"reque",
+				"RequestHandler"
+			],
+			[
+				"user",
+				"user_id"
+			],
+			[
+				"cu",
+				"currentPlayerQuery"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "osbot.py",
+			"settings":
+			{
+				"buffer_size": 1012,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "game/Engine.py",
+			"settings":
+			{
+				"buffer_size": 7726,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "game/physics.py",
+			"settings":
+			{
+				"buffer_size": 3637,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "game/controllers/__init__.py",
+			"settings":
+			{
+				"buffer_size": 1523,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "game/levelCreator.py",
+			"settings":
+			{
+				"buffer_size": 1700,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "game/Entities/Blob.py",
+			"settings":
+			{
+				"buffer_size": 2387,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "game/controllers/base.py",
+			"settings":
+			{
+				"buffer_size": 622,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "game/utils.py",
+			"settings":
+			{
+				"buffer_size": 353,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "game/controllers/stupid.py",
+			"settings":
+			{
+				"buffer_size": 784,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "game/Entities/Entity.py",
+			"settings":
+			{
+				"buffer_size": 195,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"open",
+				"View: Toggle Open Files in Side Bar"
+			],
+			[
+				"xml",
+				"Set Syntax: XML"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 184.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/dom/Documents/Python/osbot/game/resources.py",
+		"/home/dom/Documents/Python/Jumpy2D/game/Entities/Player.py",
+		"/home/dom/Documents/Python/Jumpy2D/game/Engine.py",
+		"/home/dom/Documents/Python/osbot/game/resources/levels/default.txt",
+		"/tmp/ren16.py",
+		"/home/dom/Documents/Python/osbot/game/Entities/Wall.py",
+		"/home/dom/Documents/Python/osbot/game/Entities/__init__.py",
+		"/home/dom/Documents/Python/osbot/game/controllers/stackFrameHack.py",
+		"/home/dom/Documents/Python/osbot/README.md",
+		"/home/dom/Documents/Python/osbot/game/physics.py",
+		"/home/dom/Documents/Python/osbot/game/resources/levels/physicsTest.txt",
+		"/home/dom/Documents/vic/nwen301/project3/pintos/src/threads/synch.h",
+		"/home/dom/Documents/vic/nwen301/project3/pintos/src/threads/synch.c",
+		"/home/dom/Documents/Python/Jumpy2D/game/physics.py",
+		"/home/dom/Documents/Python/osbot/game/controllers/base.py",
+		"/home/dom/try.py",
+		"/home/dom/Documents/Python/Jumpy2D/game/Entities/Entity.py",
+		"/home/dom/Documents/Python/osbot/game/controllers/__init__.py",
+		"/home/dom/Documents/Python/Vector.py",
+		"/home/dom/Documents/Python/Jumpy2D/game/Resources/Levels/uncompressed/test/level.txt",
+		"/home/dom/Documents/Python/Jumpy2D/game/Entities/utils.py",
+		"/home/dom/Documents/Python/Jumpy2D/game/Entities/Platform.py",
+		"/home/dom/Documents/Python/Jumpy2D/game/Entities/DebugCross.py",
+		"/home/dom/Documents/Python/Jumpy2D/game/GameState.py",
+		"/home/dom/Documents/Python/Jumpy2D/game/Resources.py",
+		"/home/dom/Documents/Python/Jumpy2D/game/DrawingGroups.py",
+		"/home/dom/Documents/Python/Jumpy2D/game/Entities/Explosion.py",
+		"/home/dom/Documents/Python/Jumpy2D/game/globals.py",
+		"/home/dom/Documents/Python/osbot/game/Camera.py",
+		"/home/dom/Documents/Python/osbot/game/matrixMath.py",
+		"/home/dom/Documents/Python/osbot/game/__init__.py",
+		"/home/dom/Documents/Python/euler/euler.py",
+		"/home/dom/Documents/Python/euler/323.py",
+		"/home/dom/Documents/C/euler323.c",
+		"/home/dom/Documents/Python/webDev/MatchMyTeam/handlers/teams.py",
+		"/home/dom/Documents/Python/webDev/MatchMyTeam/handlers/cron.py",
+		"/home/dom/Documents/Python/webDev/MatchMyTeam/handlers/matches.py",
+		"/home/dom/Documents/Python/webDev/MatchMyTeam/handlers/notifications.py",
+		"/home/dom/Documents/Python/webDev/MatchMyTeam/handlers/players.py",
+		"/home/dom/Documents/Python/webDev/MatchMyTeam/handlers/series.py",
+		"/home/dom/Documents/Python/webDev/MatchMyTeam/html/series/view.html",
+		"/home/dom/Documents/Python/webDev/MatchMyTeam/html/macros.html",
+		"/home/dom/Documents/Python/webDev/MatchMyTeam/html/dashboard.html",
+		"/home/dom/Documents/Python/webDev/MatchMyTeam/html/matches/view.html",
+		"/home/dom/Documents/Python/webDev/google_appengine/new_project_template/app.yaml",
+		"/home/dom/Documents/Python/webDev/google_appengine/BUGS",
+		"/home/dom/Documents/Python/webDev/google_appengine/demos/guestbook/app.yaml",
+		"/home/dom/Documents/Python/webDev/google_appengine/interactive.py",
+		"/home/dom/Documents/Python/webDev/google_appengine/google/appengine/cron/groctimespecification.py",
+		"/home/dom/Documents/Python/webDev/google_appengine/google/appengine/api/croninfo.py",
+		"/home/dom/Documents/Python/webDev/google_appengine/google/appengine/ext/ereporter/templates/report.html",
+		"/home/dom/Documents/Python/webDev/google_appengine/demos/guestbook/guestbook.py",
+		"/home/dom/Documents/Python/webDev/google_appengine/google/appengine/cron/groc.py",
+		"/home/dom/Documents/Python/webDev/google_appengine/google/appengine/cron/__init__.py",
+		"/home/dom/Documents/Python/webDev/google_appengine/run_tests.py",
+		"/home/dom/Documents/Python/webDev/google_appengine/google/appengine/base/capabilities_pb.py",
+		"/home/dom/Documents/Python/webDev/google_appengine/new_project_template/index.yaml",
+		"/home/dom/Documents/Python/webDev/MatchMyTeam/html/players/notifications.html",
+		"/home/dom/Documents/Python/webDev/MatchMyTeam/html/admin/interactive.html",
+		"/home/dom/Documents/Python/webDev/MatchMyTeam/html/base.html",
+		"/home/dom/Documents/Python/webDev/MatchMyTeam/html/matches/edit.html",
+		"/home/dom/Documents/Python/webDev/MatchMyTeam/handlers/admin.py",
+		"/home/dom/Documents/Python/webDev/MatchMyTeam/handlers/data.py",
+		"/home/dom/Documents/Python/webDev/MatchMyTeam/html/matches/editScores.html",
+		"/home/dom/Documents/Python/webDev/MatchMyTeam/html/matches/editMatchTeam.html",
+		"/home/dom/Documents/Python/webDev/MatchMyTeam/handlers/handlerUtils.py",
+		"/home/dom/Documents/umlaut.txt",
+		"/home/dom/Documents/Python/webDev/MatchMyTeam/handlers/static.py",
+		"/home/dom/Documents/Python/webDev/MatchMyTeam/tasklist.txt",
+		"/home/dom/Documents/Python/webDev/MatchMyTeam/handlers/steamUtils.py",
+		"/home/dom/Documents/Python/webDev/MatchMyTeam/html/admin/initDB.html",
+		"/home/dom/Documents/Python/webDev/google_appengine/google/appengine/ext/admin/templates/interactive-output.html",
+		"/home/dom/Documents/Python/webDev/MatchMyTeam/html/static/privacy.html",
+		"/home/dom/Documents/Python/webDev/google_appengine/google/appengine/ext/admin/templates/interactive.html",
+		"/home/dom/Documents/Python/webDev/google_appengine/google/appengine/ext/admin/__init__.py",
+		"/home/dom/Documents/Python/webDev/MatchMyTeam/html/admin/interactive-output.html",
+		"/home/dom/Documents/Python/webDev/MatchMyTeam/app.yaml",
+		"/home/dom/Documents/Python/webDev/MatchMyTeam/main.py",
+		"/home/dom/Documents/Python/webDev/google_appengine/google/appengine/ext/admin/templates/inboundmail.html",
+		"/home/dom/Documents/Python/webDev/MatchMyTeam/html/teams/editMembers.html",
+		"/home/dom/Documents/Python/webDev/MatchMyTeam/css/bootstrap-fixups.css",
+		"/home/dom/Documents/Python/webDev/MatchMyTeam/html/macro_playerSelect.html",
+		"/home/dom/Documents/Python/webDev/MatchMyTeam/handlers/playerSelect.py",
+		"/home/dom/Documents/vic/comp307/assig2/part3/data2.data",
+		"/home/dom/Documents/vic/comp307/assig2/part3/data.data",
+		"/tmp/annotation_demo2.py",
+		"/home/dom/Documents/Python/webDev/matchMyTeam.sublime-project",
+		"/home/dom/Documents/Python/webDev/MatchMyTeam/html/players/playerlist.html",
+		"/home/dom/Documents/Python/webDev/MatchMyTeam/css/bootstrap.css",
+		"/home/dom/.gvfs/SFTP for schmiddomi on barretts.ecs.vuw.ac.nz/vol/submit/comp102_2013T1/Assignment_3/ackroymich/marking/MarkSheet.txt",
+		"/home/dom/.gvfs/SFTP for schmiddomi on barretts.ecs.vuw.ac.nz/vol/submit/comp102_2013T1/Assignment_3/ackroymich/marking/CartoonFigure.java",
+		"/home/dom/Documents/Python/webDev/MatchMyTeam/html/static/test.html",
+		"/home/dom/.gvfs/SFTP for schmiddomi on barretts.ecs.vuw.ac.nz/vol/submit/comp102_2013T1/Assignment_3/ackroymich/marking/LetterWriter.java",
+		"/home/dom/.gvfs/SFTP for schmiddomi on barretts.ecs.vuw.ac.nz/vol/submit/comp102_2013T1/Assignment_3/ackroymich/marking/CartoonStrip.java",
+		"/home/dom/.gvfs/SFTP for schmiddomi on barretts.ecs.vuw.ac.nz/vol/submit/comp102_2013T1/Assignment_3/ackroymich/marking/Reflection.txt",
+		"/home/dom/Documents/Python/webDev/MatchMyTeam/handlers/datatools.py",
+		"/home/dom/Documents/Python/webDev/MatchMyTeam/html/teams/view.html",
+		"/home/dom/Documents/Python/webDev/MatchMyTeam/html/matches/create.html",
+		"/home/dom/Documents/Python/webDev/MatchMyTeam/js/playerSelect.js",
+		"/home/dom/Documents/Python/webDev/MatchMyTeam/html/matches/find.html",
+		"/home/dom/Documents/Python/webDev/MatchMyTeam/html/playerSelect.html",
+		"/home/dom/Documents/vic/2012 exams",
+		"/home/dom/.config/sublime-text-2/Packages/User/Preferences.sublime-settings",
+		"/home/dom/Documents/Python/webDev/MatchMyTeam/html/teams/create.html",
+		"/home/dom/Documents/Python/webDev/MatchMyTeam/css/mine.css",
+		"/home/dom/Documents/Python/webDev/MatchMyTeam/index.yaml",
+		"/home/dom/Documents/Python/webDev/MatchMyTeam/css/style.css",
+		"/home/dom/Documents/Python/webDev/MatchMyTeam/html/players/view.html",
+		"/home/dom/Documents/Python/webDev/MatchMyTeam/html/test.html",
+		"/home/dom/Documents/Python/webDev/MatchMyTeam/css/bootstrap-datetimepicker.min.css",
+		"/home/dom/Documents/Python/webDev/google_appengine/lib/jinja2/docs/_templates/sidebarintro.html",
+		"/home/dom/Documents/Python/webDev/google_appengine/lib/jinja2/docs/templates.rst",
+		"/home/dom/Documents/Python/webDev/google_appengine/lib/jinja2/docs/tricks.rst",
+		"/home/dom/Documents/Python/webDev/google_appengine/lib/jinja2/docs/jinjaext.py",
+		"/home/dom/Documents/Python/webDev/google_appengine/lib/jinja2/docs/intro.rst",
+		"/home/dom/Documents/Python/webDev/google_appengine/lib/jinja2/docs/index.rst",
+		"/home/dom/Documents/Python/webDev/google_appengine/lib/jinja2/docs/api.rst",
+		"/home/dom/Documents/Python/webDev/google_appengine/lib/jinja2/docs/sandbox.rst",
+		"/home/dom/Documents/Python/webDev/MatchMyTeam/handlers/match.py",
+		"/home/dom/.appcfg_nag",
+		"/home/dom/.cache/.fr-rCyMjU/js/bootstrap.js",
+		"/home/dom/Desktop/david.sh",
+		"/home/dom/Documents/Python/webDev/MatchMyTeam/js/bootstrap.js",
+		"/home/dom/Documents/Python/webDev/MatchMyTeam/handlers/login.py",
+		"/tmp/76561198080210582",
+		"/home/dom/Documents/Python/webDev/MatchMyTeam/handlers/do_openid_login.py",
+		"/home/dom/Documents/Python/webDev/matchmyclan/html/teams/view.html",
+		"/home/dom/Documents/Python/webDev/matchmyclan/app.yaml"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"assertClose",
+			"allControllerNames",
+			"center",
+			"sqrt",
+			"self",
+			"Cont",
+			"Controller",
+			"controller",
+			"Entities",
+			"1",
+			"controller",
+			"colour",
+			"offset",
+			"position",
+			"posi",
+			"radius",
+			"rotate",
+			"hitTest",
+			"load",
+			"loadL",
+			"of concept",
+			" ",
+			"f_back",
+			"object",
+			"shapes",
+			"controller",
+			"contro",
+			"Wall",
+			"Blob",
+			"physicsClass",
+			"Blob",
+			"somethingSmall",
+			"massEjected",
+			"Ejected",
+			"Eje",
+			"shotdir",
+			"massEjected",
+			"*",
+			"time",
+			"updating",
+			"200",
+			"Blob",
+			"__all__",
+			"    ",
+			",",
+			"blob",
+			"literal_eval",
+			"self",
+			"highestBlobId",
+			"big",
+			"position",
+			"x",
+			"e.mass",
+			"assert",
+			"B",
+			"colour",
+			"Space",
+			"space",
+			"entityDelQueue",
+			"shapeToEntity",
+			"quadratic",
+			"distance",
+			"val",
+			"foo",
+			"shapeToEntityMap",
+			"game",
+			"10",
+			"radiusVector",
+			"onDraw",
+			"pos",
+			"vertexLists",
+			"vertexL",
+			"Batch",
+			"e.draw",
+			".add",
+			"hasattrs",
+			"isEntityKind",
+			"add",
+			"entityAddQueue",
+			"addE",
+			"game",
+			"size",
+			"self",
+			"Level",
+			"gl",
+			"pyglet",
+			"gl",
+			"loadE",
+			"init",
+			"space",
+			"init",
+			"initS",
+			"space",
+			"    ",
+			"self",
+			"game",
+			"collisionType",
+			"collisionSquare",
+			"space",
+			"level.space",
+			"InvalidLevelError",
+			"entities",
+			"addEntity",
+			"player",
+			"addEntity",
+			"game",
+			"playerInput",
+			"resourceOpen",
+			"mkdir",
+			"path",
+			"mkdir",
+			"pardir",
+			"chrashOnFail",
+			"levelTime",
+			"playerInput",
+			"drawLayersBatch",
+			"drawLayers",
+			"game.",
+			"game",
+			"inverse",
+			"groups",
+			"self.space",
+			"space",
+			"e.level",
+			"vertexLists",
+			"vertexList",
+			"vertexLists",
+			"shapeTo"
+		],
+		"highlight": false,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "osbot.py",
+					"settings":
+					{
+						"buffer_size": 1012,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								731,
+								731
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "game/Engine.py",
+					"settings":
+					{
+						"buffer_size": 7726,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3750,
+								3750
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1823.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "game/physics.py",
+					"settings":
+					{
+						"buffer_size": 3637,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								66,
+								66
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 255.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "game/controllers/__init__.py",
+					"settings":
+					{
+						"buffer_size": 1523,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								700,
+								700
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 391.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "game/levelCreator.py",
+					"settings":
+					{
+						"buffer_size": 1700,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								287,
+								287
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "game/Entities/Blob.py",
+					"settings":
+					{
+						"buffer_size": 2387,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								352,
+								352
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "game/controllers/base.py",
+					"settings":
+					{
+						"buffer_size": 622,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								299,
+								299
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "game/utils.py",
+					"settings":
+					{
+						"buffer_size": 353,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								133,
+								133
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "game/controllers/stupid.py",
+					"settings":
+					{
+						"buffer_size": 784,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								129,
+								129
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "game/Entities/Entity.py",
+					"settings":
+					{
+						"buffer_size": 195,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								103,
+								103
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 2
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 252.0
+	},
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"util",
+				"handlers/handlerUtils.py"
+			],
+			[
+				"mac",
+				"html/macros.html"
+			],
+			[
+				"teams",
+				"handlers/teams.py"
+			],
+			[
+				"admin",
+				"handlers/admin.py"
+			],
+			[
+				"view",
+				"html/teams/view.html"
+			],
+			[
+				"mat",
+				"handlers/matches.py"
+			],
+			[
+				"team",
+				"handlers/teams.py"
+			],
+			[
+				"dash",
+				"html/dashboard.html"
+			],
+			[
+				"match",
+				"handlers/matches.py"
+			],
+			[
+				"data",
+				"handlers/data.py"
+			],
+			[
+				"match/v",
+				"html/matches/view.html"
+			],
+			[
+				"pla",
+				"handlers/players.py"
+			],
+			[
+				"base",
+				"html/base.html"
+			],
+			[
+				"adm",
+				"handlers/admin.py"
+			],
+			[
+				"edit",
+				"html/matches/edit.html"
+			],
+			[
+				"matchview",
+				"html/matches/view.html"
+			],
+			[
+				"editmat",
+				"html/matches/editMatchTeam.html"
+			],
+			[
+				"score",
+				"html/matches/editScores.html"
+			],
+			[
+				"matc",
+				"handlers/matches.py"
+			],
+			[
+				"hand",
+				"handlers/handlerUtils.py"
+			],
+			[
+				"das",
+				"html/dashboard.html"
+			],
+			[
+				"tea",
+				"handlers/teams.py"
+			],
+			[
+				"editm",
+				"html/teams/editMembers.html"
+			],
+			[
+				"scores",
+				"html/matches/editScores.html"
+			],
+			[
+				"fix",
+				"css/bootstrap-fixups.css"
+			],
+			[
+				"main",
+				"/home/dom/Documents/Python/webDev/myApp/main.html"
+			],
+			[
+				"dat",
+				"/home/dom/Documents/vic/eclipse/comp261 - B+trees/IP2Name.dat"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+			[
+				"",
+				"/home/dom/Documents/Python/tf2/sourcemod plugins/detag.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true
+}

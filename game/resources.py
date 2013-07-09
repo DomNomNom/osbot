@@ -7,7 +7,10 @@ from pymunk import Vec2d, Space
 from controllers import allControllers
 
 
-resource.path = ['game/resources/levels']
+resource.path = [
+  'game/resources/levels',
+  'game/resources/textures',
+]
 resource.reindex()
 
 # a flag to chrash when anything goes wrong when the level isn't valid

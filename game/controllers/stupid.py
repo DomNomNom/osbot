@@ -21,7 +21,7 @@ from base import Controller
 class ShootRandomly(Controller):
   def start(self):
     self.time = 0
-    self.shoot_interval = 0.2
+    self.shoot_interval = 0.5
     self.shoot_next = self.shoot_interval
 
   def actions(self, dt):
