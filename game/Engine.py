@@ -16,6 +16,8 @@ import levelCreator
 from Camera import Camera
 from Entities.Blob import Blob
 from utils import liveInspect
+from spaceView import SpaceView
+
 
 
 # a function to test whether physics values are in acceptable bounds
@@ -60,9 +62,6 @@ class Engine:
 
     self.accumulatedFrameTime = 0.
 
-    self.shapeToEntity = {} # a dict that gives the entity that contains the keyed shape
-    self.blobs = {}         # a dict from blob.id to blob
-    self.highestBlobId = 0
 
     # Window
     config = gl.Config(
@@ -168,7 +167,10 @@ class Engine:
 
   def loadLevel(self, levelName):
     # Initialize physics
+    self.blobs = {}         # a dict from blob.id to blob
+    self.highestBlobId = 0
     self.space = physics.createSpace(self)
+    self.spaceView = SpaceView(self.space)
 
     # self.levelCreator = resources.loadEntities
     self.levelCreator = levelCreator.createLevel
@@ -196,7 +198,7 @@ class Engine:
       if Entities.isEntityKind_physics(e):
         self.space.add(e.shapes)
         for shape in e.shapes:
-          self.shapeToEntity[shape] = e
+          self.spaceView.shapeToEntity[shape] = e
         if e.body is not self.space.static_body:
           self.space.add(e.body)
       if Entities.isEntityKind_visible(e):
@@ -206,7 +208,7 @@ class Engine:
           self.drawCalls[e.drawLayer].append(e.draw)
       if isinstance(e, Blob):
         self.highestBlobId += 1
-        e.controller = e.controller(e, self.blobs)  # initialize the controller
+        e.controller = e.controller(e, self.blobs, self.spaceView)  # initialize the controller
         e.id = self.highestBlobId
         self.blobs[e.id] = e
 
@@ -216,13 +218,13 @@ class Engine:
       if e in self.groups['all']:
         self.groups['all'].remove(e)
       else:
-        print "was told to delete entity but it was not in the 'all' group: " + repr(e) # DEBUG
+        # print "was told to delete entity but it was not in the 'all' group: " + repr(e) # DEBUG
         continue
       if Entities.isEntityKind_updating(e):   self.groups['updating'].remove(e)
       if Entities.isEntityKind_physics(e):
         self.space.remove(e.shapes)
         for shape in e.shapes:
-          del self.shapeToEntity[shape]
+          del self.spaceView.shapeToEntity[shape]
         if e.body is not self.space.static_body:
           self.space.remove(e.body)
       if Entities.isEntityKind_visible(e):

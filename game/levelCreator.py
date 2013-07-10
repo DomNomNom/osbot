@@ -14,6 +14,7 @@ from Entities.Wall import Wall
 wd = 640
 ht = 480
 
+
 allControllers = controllers.allControllers.values()
 
 def randomizeCircle(circle):
@@ -26,13 +27,17 @@ def randomizeCircle(circle):
 
 # procedurally creates a level.
 def createLevel(levelName):
+    r = 480 # box radius
+    wd2 = 640 / 2
+    ht2 = 480 / 2
+
 
     entities = [
         # a box around the screen
-        Wall( (-10, 300), ( 10, 300) ),
-        Wall( (650, 300), ( 10, 300) ),
-        Wall( (300, -10), (400,  10) ),
-        Wall( (300, 490), (400,  10) ),
+        Wall( (  -r, ht2), (   r, ht*3) ),  # left
+        Wall( (wd+r, ht2), (   r, ht*3) ),  # right
+        Wall( (wd2,   -r), (wd*3,    r) ),  # bottom
+        Wall( (wd2, ht+r), (wd*3,    r) ),  # top
     ]
 
     # create blobs such that they don't intersect

@@ -17,7 +17,7 @@ for loader, module_name, is_pkg in  pkgutil.walk_packages(__path__):
 
 # initialize each class with a  colour
 colours = [
-    [ 0.40,  0.78,  0.16],
+    [ 0.50,  0.58,  0.16],
     [ 0.5,   0.5,   0.5 ],
     [ 0.78,  0.16,  0.70],
     [ 0.32,  0.16,  0.78],

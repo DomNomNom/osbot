@@ -28,7 +28,7 @@ constructors = { # To construct the entities when we load a level from a file
 
 
 
-
+# not used anymore
 def loadEntities(levelName):
   lineCount = 0
   entities = []

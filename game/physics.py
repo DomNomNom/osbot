@@ -54,12 +54,15 @@ def createSpace(engine_):
 
   return space
 
+maxEjectVel = 100
 massEjectProportion = 0.10  # 10% of the original mass gets ejected
 def shoot(blob, ejectVel):
   if blob.radius < Blob.minRadius:
     return
   assert 0 < massEjectProportion < 1
-  assert ejectVel
+  assert ejectVel > 0
+  if ejectVel.length > maxEjectVel:
+    ejectVel.length = maxEjectVel
   mass_eject = blob.body.mass *      massEjectProportion
   mass_blob  = blob.body.mass * (1 - massEjectProportion)
   radius = sqrt(mass_eject / pi)
@@ -83,10 +86,8 @@ def quadraticFormula(a, b, c):
 
 def handler_blob(space, arbiter, *args, **kwargs):
 
-  blob_1 = engine.shapeToEntity[arbiter.shapes[0]]
-  blob_2 = engine.shapeToEntity[arbiter.shapes[1]]
-  # print 'omgwtf: ', repr(random.shuffle([blob_1, blob_2]))
-
+  blob_1 = engine.spaceView.shapeToEntity[arbiter.shapes[0]]
+  blob_2 = engine.spaceView.shapeToEntity[arbiter.shapes[1]]
 
   if    blob_1.radius > blob_2.radius:  big, sml = blob_1, blob_2
   elif  blob_1.radius < blob_2.radius:  big, sml = blob_2, blob_1
@@ -115,9 +116,8 @@ def handler_blob(space, arbiter, *args, **kwargs):
     big.radius = newBigRadius
     sml.radius = d - newBigRadius
 
+    # conservation of momentum
     transferred_mass = big.body.mass - big_mass
     big.body.velocity = (P_big + transferred_mass*sml.body.velocity) / (big_mass + transferred_mass)
-    # conservation of momentum
-    # big.body.velocity = Vec2d()
 
   return False
