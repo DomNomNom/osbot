@@ -16,6 +16,12 @@ ht = 480
 
 
 allControllers = controllers.allControllers.values()
+nextControllerIndex = 0
+def nextController():
+    global nextControllerIndex
+    nextControllerIndex = (nextControllerIndex + 1) % len(allControllers)
+    return allControllers[nextControllerIndex]
+    #return random.choice(allControllers)
 
 def randomizeCircle(circle):
     radius = 20 + random.random()*10
@@ -60,7 +66,7 @@ def createLevel(levelName):
 
         space.add(hitTest)
         entities.append(Blob(
-            random.choice(allControllers),
+            nextController(),
             hitTest.offset,
             hitTest.radius,
             vel=velocity,

@@ -30,8 +30,8 @@ def assertClose(a, b):
 class Engine:
 
   def __init__(self):
-    self.updateRate = 1/60. # how often our physics will kick in (in seconds)
-    self.timestep = self.updateRate * 1.
+    self.updateRate = 1/300. # real-time between physics ticks in seconds. the lower this is the more accurete the physics is
+    self.timestep = self.updateRate * 0.5 # how much game time each simulation represents
 
     # groups of entities
     self.groups = {
@@ -96,6 +96,8 @@ class Engine:
     def on_key_press(symbol, modifiers):
       if symbol==key.QUOTELEFT and modifiers & key.MOD_CTRL:
         liveInspect(self)
+      elif symbol==key.UP:   self.timestep *= 2.
+      elif symbol==key.DOWN: self.timestep *= 0.5
 
     self.fps_display = clock.ClockDisplay()
 

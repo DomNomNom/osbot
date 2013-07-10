@@ -6,7 +6,7 @@ Rules of a Controller:
 - may not change the state of the program directly
 - may not chrash or cause errors
 - if it shoots too often, causing the Blob to become too small (<Blob.minRadius), it will no longer be run
-- eject velocities will be externally clamped to have a magnitude <= physics.maxEjectVel (100)
+- eject velocities will be externally clamped to have a magnitude <= physics.maxEjectVel
 '''
 
 

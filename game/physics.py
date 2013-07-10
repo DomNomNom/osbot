@@ -103,7 +103,7 @@ def handler_blob(space, arbiter, *args, **kwargs):
   P_sml = sml_mass * sml.body.velocity
   P = P_big + P_sml   # total momentum
 
-  d = (big.body.position - sml.body.position).length # distance
+  d = (big.body.position - sml.body.position).length # distance between centers
   B = big.radius**2 + sml.radius**2 # == area / pi
   if d <= sqrt(B): # if we can't fit both, OMNOMNOM
     big.radius = sqrt(B)

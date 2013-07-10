@@ -36,7 +36,7 @@ def dangerous(blob, other):
 class DomNomNom(Controller):
   def start(self):
     self.hitTest = pymunk.Circle(self.spaceView.body, self.blob.radius)
-    self.detectionRadius = 20
+    self.detectionRadius = 100
 
 
   def actions(self, dt):
