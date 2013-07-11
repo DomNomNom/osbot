@@ -28,5 +28,5 @@ class ShootRandomly(Controller):
     self.time += dt
     while self.time >= self.shoot_next:
       self.shoot_next += self.shoot_interval
-      return { 'shots' : [Vec2d(100,0).rotated(random.random()*360)] }
-    return {}
+      return Vec2d(0.1, 0).rotated_degrees(random.random()*360)
+    return None

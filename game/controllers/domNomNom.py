@@ -4,8 +4,9 @@ from pymunk import Vec2d
 from base import Controller
 
 
+
 def dangerous(blob, other):
-  from game.Entities.Blob import Blob
+  from game.Entities.Blob import Blob # avoid
   if (
     not issubclass(type(other), Blob) or
     other.radius < blob.radius
@@ -47,15 +48,18 @@ class DomNomNom(Controller):
     self.hitTest.unsafe_set_offset(self.blob.body.position)
     self.hitTest.unsafe_set_radius(self.blob.radius + self.detectionRadius)
     others = self.spaceView.shape_query(self.hitTest)
-    happy = True
     if len(others) > 1:
       others.remove(self.blob.hitbox)
       dangerousBlobs = [ other for other in others if dangerous(self.blob, self.spaceView.shapeToEntity[other]) ]
       if dangerousBlobs:
         # print 'omg about to be eaten:', dangerousBlobs
-        happy = False
         self.colour = (1,0,0)
-        return { 'shots' : [ 100 * (danger.body.position-self.blob.body.position) for danger in dangerousBlobs ] }
+
+        eject = sum([ (danger.body.position-self.blob.body.position) for danger in dangerousBlobs ])
+        if not eject:
+          return None
+
+        eject.length = 0.5
+        return eject
 
     self.colour = (0,1,0)
-    return {}

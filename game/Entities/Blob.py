@@ -61,14 +61,10 @@ class Blob(PhysicsEntity):
 
 
   def update(self, dt):
-    if self.radius >= self.minRadius:
-      actions = self.controller.actions(dt)
-      if actions and 'shots' in actions:
-        return {
-          'shots' : actions['shots']
-        }
-
-    return {}
+    if self.radius < self.minRadius:
+      self.colour = controllers.Controller.colour
+      return
+    return self.controller.actions(dt)
 
 
   def initGraphics(self, batch):
@@ -91,4 +87,4 @@ class Blob(PhysicsEntity):
     #   self.label.draw()
 
   def __repr__(self):
-    return 'Blob{0}'.format(self.id)
+    return 'Blob({1}, {0})'.format(self.id, type(self.controller))

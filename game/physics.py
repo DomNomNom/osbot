@@ -54,24 +54,33 @@ def createSpace(engine_):
 
   return space
 
-maxEjectVel = 100
-massEjectProportion = 0.10  # 10% of the original mass gets ejected
-def shoot(blob, ejectVel):
+def toMass(radius): return pi * radius**2
+def toRadius(mass): return sqrt(mass / pi)
+
+def quadraticFormula(a, b, c):
+  return (-b + sqrt(b**2 - 4*a*c)) / (2*a)
+
+ejectSpeed = 100
+def shoot(blob, ejectVec):
   if blob.radius < Blob.minRadius:
     return
-  assert 0 < massEjectProportion < 1
+
+  massEjectProportion = ejectVec.length
+  ejectVel = ejectVec
+  ejectVel.length = ejectSpeed
+
+  assert 0 < massEjectProportion < 1, "this blob violated the law: " + str(blob)
   assert ejectVel > 0
-  if ejectVel.length > maxEjectVel:
-    ejectVel.length = maxEjectVel
+
   mass_eject = blob.body.mass *      massEjectProportion
   mass_blob  = blob.body.mass * (1 - massEjectProportion)
-  radius = sqrt(mass_eject / pi)
+  radius = toRadius(mass_eject)
   offset = Vec2d(ejectVel)
   offset.length = blob.radius + radius + 0.0001
 
   originalVelocity = Vec2d(blob.body.velocity)
   blob.body.velocity = (mass_blob*blob.body.velocity - mass_eject*ejectVel) / (mass_blob)  # conservation of momentum
-  blob.radius = sqrt(mass_blob / pi)
+  blob.radius = toRadius(mass_blob)
 
   return Blob(
     controllers.Controller,
@@ -80,9 +89,6 @@ def shoot(blob, ejectVel):
     ejectVel + originalVelocity
   )
 
-
-def quadraticFormula(a, b, c):
-  return (-b + sqrt(b**2 - 4*a*c)) / (2*a)
 
 def handler_blob(space, arbiter, *args, **kwargs):
 

@@ -6,7 +6,7 @@ Rules of a Controller:
 - may not change the state of the program directly
 - may not chrash or cause errors
 - if it shoots too often, causing the Blob to become too small (<Blob.minRadius), it will no longer be run
-- eject velocities will be externally clamped to have a magnitude <= physics.maxEjectVel
+- shots are vectors with magnitude of the percent of mass ejected and the direction they will be fired out
 '''
 
 
@@ -24,4 +24,4 @@ class Controller(object):
     pass  # To override at your leasure (so you don't have to worry about the constructor)
 
   def actions(self, dt):
-    return { 'shots': [] }
+    return None
